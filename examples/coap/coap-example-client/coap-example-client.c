@@ -20,7 +20,7 @@ static rtimer_clock_t start_count, end_count;
 static rtimer_clock_t start_all, end_all;
 int m; //messages counter
 
-char *service_urls[1] = { "test/hello", "test/energy" };
+char *service_urls[2] = { "test/hello", "test/energy" };
 
 void client_chunk_handler(coap_message_t *response) {
   const uint8_t *chunk;
@@ -43,7 +43,7 @@ PROCESS_THREAD(er_example_client, ev, data) {
 
   // test/energy
   coap_init_message(request, COAP_TYPE_CON, COAP_GET, 0);
-  coap_set_header_uri_path(request, service_urls[0]);
+  coap_set_header_uri_path(request, service_urls[1]);
   LOG_INFO_COAP_EP(&server_ep);
   COAP_BLOCKING_REQUEST(&server_ep, request, client_chunk_handler);
 
@@ -66,6 +66,13 @@ PROCESS_THREAD(er_example_client, ev, data) {
     }
   }
   end_all = RTIMER_NOW();
+
+  // test/energy
+  coap_init_message(request, COAP_TYPE_CON, COAP_GET, 0);
+  coap_set_header_uri_path(request, service_urls[1]);
+  LOG_INFO_COAP_EP(&server_ep);
+  COAP_BLOCKING_REQUEST(&server_ep, request, client_chunk_handler);
+
   printf("| start_all %lu ", (unsigned long)(start_all));
   printf("| end_all %lu ", (unsigned long)(end_all));
   printf("| elapsed_all %lu \n", (unsigned long)(end_all - start_all));
