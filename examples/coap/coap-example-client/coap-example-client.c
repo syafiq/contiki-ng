@@ -75,8 +75,9 @@ PROCESS_THREAD(er_example_client, ev, data) {
   coap_set_header_uri_path(request, service_urls[1]);
   LOG_INFO_COAP_EP(&server_ep);
   COAP_BLOCKING_REQUEST(&server_ep, request, client_chunk_handler);
+  LOG_INFO_("\n");
 
-  printf("| start_all %lu ", (unsigned long)(start_all));
+  printf("start_all %lu ", (unsigned long)(start_all));
   printf("| end_all %lu ", (unsigned long)(end_all));
   printf("| elapsed_all %lu \n", (unsigned long)(end_all - start_all));
   LOG_INFO_("STOP \n");
