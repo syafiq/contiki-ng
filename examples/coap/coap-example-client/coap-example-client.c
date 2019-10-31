@@ -40,6 +40,13 @@ PROCESS_THREAD(er_example_client, ev, data) {
   etimer_set(&et, 2 * CLOCK_SECOND);
   m = 1;
   LOG_INFO_("START \n");
+
+  // test/energy
+  coap_init_message(request, COAP_TYPE_CON, COAP_GET, 0);
+  coap_set_header_uri_path(request, service_urls[0]);
+  LOG_INFO_COAP_EP(&server_ep);
+  COAP_BLOCKING_REQUEST(&server_ep, request, client_chunk_handler);
+
   start_all = RTIMER_NOW();
   while(m <= 100) {
     PROCESS_YIELD();
