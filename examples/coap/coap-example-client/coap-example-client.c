@@ -18,7 +18,7 @@ AUTOSTART_PROCESSES(&er_example_client);
 static struct etimer et;
 static rtimer_clock_t start_count, end_count;
 static rtimer_clock_t start_all, end_all;
-int m;
+int m; //messages counter
 
 char *service_urls[1] = { "test/hello" };
 
