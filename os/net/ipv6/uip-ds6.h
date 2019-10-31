@@ -87,13 +87,13 @@
  *                       globally unique prefix.  See Section 3.2 for
  *                       additional information.
  *
- * We set prefix to 0xfc00 and set the local bit, resulting in 0xfd00.
+ * We set prefix to 0xfc00 and set the local bit, resulting in 0xfd03.
  * For high probability of network uniqueness, Global ID must be generated
  * pseudo-randomly. As this is a hard-coded default prefix, we simply use
  * a Global ID of 0. For real deployments, make sure to install a pseudo-random
  * Global ID, e.g. in a RPL network, by configuring it at the root.
  */
-#define UIP_DS6_DEFAULT_PREFIX 0xfd00
+#define UIP_DS6_DEFAULT_PREFIX 0xfd03
 #endif /* UIP_CONF_DS6_DEFAULT_PREFIX */
 
 #define UIP_DS6_DEFAULT_PREFIX_0 ((UIP_DS6_DEFAULT_PREFIX >> 8) & 0xff)
