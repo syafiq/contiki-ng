@@ -1,4 +1,4 @@
-PREFIX ?= fd00::1/64
+PREFIX ?= fd03::1/64
 
 ifdef PORT
 	TUNSLIP6_ARGS = -s $(PORT) $(PREFIX)
