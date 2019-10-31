@@ -20,7 +20,7 @@ static rtimer_clock_t start_count, end_count;
 static rtimer_clock_t start_all, end_all;
 int m; //messages counter
 
-char *service_urls[1] = { "test/hello" };
+char *service_urls[1] = { "test/hello", "test/energy" };
 
 void client_chunk_handler(coap_message_t *response) {
   const uint8_t *chunk;
