@@ -46,6 +46,8 @@ PROCESS_THREAD(er_example_client, ev, data) {
   coap_set_header_uri_path(request, service_urls[1]);
   LOG_INFO_COAP_EP(&server_ep);
   COAP_BLOCKING_REQUEST(&server_ep, request, client_chunk_handler);
+  LOG_INFO_("\n");
+  LOG_INFO_("\n");
 
   start_all = RTIMER_NOW();
   while(m <= 100) {
@@ -68,6 +70,7 @@ PROCESS_THREAD(er_example_client, ev, data) {
   end_all = RTIMER_NOW();
 
   // test/energy
+  LOG_INFO_("\n");
   coap_init_message(request, COAP_TYPE_CON, COAP_GET, 0);
   coap_set_header_uri_path(request, service_urls[1]);
   LOG_INFO_COAP_EP(&server_ep);
